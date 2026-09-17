@@ -14323,9 +14323,7 @@
                         var start = Math.max(0, pos - 70);
                         var snip = (start > 0 ? '…' : '') + plain.slice(start, start + 200) + (plain.length > start + 200 ? '…' : '');
 
-                        var re = new RegExp('(' + q.replace(/[.*+?^$ {}
-
-                            () | [\]\\]/g, '\\$&') + ')', 'ig');
+                        var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
                         h += '<button class="sres" data-lesson="' + x.lesson.id + '"' + (x.bid ? ' data-focus="' + x.bid + '"' : '') + '>' + '<div class="path">' + esc(x.lesson.course.code) + ' · ' + esc(x.lesson.module.title) + '</div>' + '<div class="t">' + esc(x.lesson.title) + '</div>' + '<div class="ex">' + esc(snip).replace(re, '<b>$1</b>') + '</div></button>';
                     });
                     h += '</div>';
