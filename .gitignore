@@ -1,0 +1,21 @@
+# Vercel
+.vercel/
+
+# Dependencies (in case tooling is added later)
+node_modules/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Editor / OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*

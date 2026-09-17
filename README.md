@@ -68,15 +68,55 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/your-username/cs-studyhub.git
+cd cs-studyhub
 ```
 
-Open the project folder and launch the HTML file in your browser.
+`index.html` is fully self-contained — no build step, no dependencies, no
+package manager. You can open it directly in your browser:
 
-No additional installation is required for the basic version.
+```bash
+start index.html      # Windows
+open index.html       # macOS
+```
 
-### Deployment
+To preview it the way it will be served in production, run any static server:
 
-The project can be deployed using platforms such as **Vercel** for easy access through the web.
+```bash
+npx serve .
+# then visit http://localhost:3000
+```
+
+### Deploy to Vercel
+
+The project is a zero-config static site. Vercel serves `index.html` at the
+root automatically — there is nothing to build.
+
+**Option A — Git integration (recommended)**
+
+1. Push this repository to GitHub, GitLab, or Bitbucket.
+2. In Vercel, choose **Add New → Project** and import the repository.
+3. Leave every build setting empty — Framework Preset **Other**, no build
+   command, no output directory.
+4. Click **Deploy**.
+
+Every push to `main` then redeploys automatically.
+
+**Option B — Vercel CLI**
+
+```bash
+npm i -g vercel
+vercel          # preview deployment
+vercel --prod   # production deployment
+```
+
+`vercel.json` sets security headers and marks the HTML `must-revalidate`, so
+returning visitors get a cheap `304 Not Modified` instead of re-downloading
+the file, while still picking up new content immediately after a redeploy.
+
+> **Note on your progress:** study progress, highlights, notes, and bookmarks
+> are saved in your browser's `localStorage`, scoped to the domain. Redeploying
+> does not clear it. It is per-browser and per-device, so it will not follow you
+> to another machine.
 
 ## 📖 How It Works
 
